@@ -1,28 +1,25 @@
 import java.util.Scanner;
 
 public class UserMain {
-
 	public static void main(String[] args) {
-		
-		User userArray[]=new User[3];
+		UserData userDataObj=new UserData();
 		Scanner sc=new Scanner(System.in);
-		for(int i=0;i<userArray.length;i++) {
+		for(int i=0;i<3;i++) {
 		System.out.println("Enter the User Id");
 		int id=sc.nextInt();
 		sc.nextLine();
 		System.out.println("Enter the User Name");
 		String name=sc.nextLine();
-		System.out.println(id +" "+name);
 		
-		User userObj=new User();
-		userObj.setUserId(id);
-		userObj.setUserName(name);
-		//User userObj=new User(id,name);
-		userArray[i]=userObj;// storing user object in user array
+		User userObj=new User(id,name);
+		userDataObj.addUser(userObj);
+		
 		}
-		System.out.println(userArray[2]);
-		for(User u:userArray)
-			System.out.println(u.getUserId()+" "+u.getUserName());
+		User userArr[]=userDataObj.getAllUsers();
+		for(User u:userArr) {
+			System.out.println(u.getUserId()+ " "+u.getUserName());
+		}
+		
 	}
 
 }
